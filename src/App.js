@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Formulario } from './componente/Formulario'
+import { Home } from './componente/Home'
 
-function App() {
+import {useState} from 'react'
+
+function App(){
+  const [user,setUser]=useState([])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <div className="App">
+    {
+      !user.length > 0
+      ? <Formulario setUser={setUser}/>
+      : <Home user={user} setUser={setUser}/>
+    }
+  </div>
+  )
 }
-
-export default App;
+export default App
